@@ -1,0 +1,48 @@
+<h2>{{ editingMode ? 'Edit User' : 'Add User' }}</h2>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" />
+    <div *ngIf="userForm.get('name').hasError('required') && userForm.get('name').touched">
+      Name is required.
+    </div>
+  </div>
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" formControlName="username" />
+    <div *ngIf="userForm.get('username').hasError('required') && userForm.get('username').touched">
+      Username not Valid
+    </div>
+  </div>
+  <div>
+    <div class="form-group">
+      <label for="dob">Date of Birth</label>
+      <div class="date-selector">
+        <select formControlName="dobDay" class="day">
+          <option *ngFor="let day of days" [value]="day">{{ day }}</option>
+        </select>
+        <select formControlName="dobMonth" class="month">
+          <option *ngFor="let month of months; let i = index" [value]="i + 1">{{ month }}</option>
+        </select>
+        <select formControlName="dobYear" class="year">
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" />
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password" />
+  </div>
+  <div>
+    <label for="zipcode">Zipcode:</label>
+    <input type="text" id="zipcode" formControlName="zipcode" />
+  </div>
+  <button type="submit">{{ editingMode ? 'Update' : 'Save' }}</button>
+  <button type="button" (click)="goBack()">Cancel</button>
+</form>

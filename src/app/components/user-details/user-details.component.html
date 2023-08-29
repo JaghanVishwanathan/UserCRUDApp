@@ -1,0 +1,12 @@
+<h2>User Details</h2>
+<div *ngIf="user">
+  <p><strong>Name:</strong> {{ user.name }}</p>
+  <p><strong>Username:</strong> {{ user.username }}</p>
+  <p><strong>Date of Birth:</strong> {{ user.dob }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Zipcode:</strong> {{ user.zipcode }}</p>
+  <button (click)="goBack()">Go Back</button>
+</div>
+<div *ngIf="!user">
+  <p>User not found.</p>
+</div>
